@@ -119,6 +119,7 @@ static int KeyboardEvent(lua_State *L, const SDL_Event *event)
 #undef E
     }
 
+#if 0
 static int TextEditingEvent(lua_State *L, const SDL_Event *event)
     {
 #define E event->editExt
@@ -135,6 +136,7 @@ static int TextEditingEvent(lua_State *L, const SDL_Event *event)
     return 1;
 #undef E
     }
+#endif
 
 static int TextInputEvent(lua_State *L, const SDL_Event *event)
     {
@@ -461,8 +463,10 @@ static int pushevent(lua_State *L, SDL_Event *event)
         case SDL_SYSWMEVENT: break; //return SysWMEvent(L, event);
         case SDL_KEYDOWN:
         case SDL_KEYUP: return KeyboardEvent(L, event);
+#if 0 
         case SDL_TEXTEDITING:
         case SDL_TEXTEDITING_EXT: return TextEditingEvent(L, event);
+#endif
         case SDL_TEXTINPUT: return TextInputEvent(L, event);
         case SDL_KEYMAPCHANGED: break;
         case SDL_MOUSEMOTION: return MouseMotionEvent(L, event);
