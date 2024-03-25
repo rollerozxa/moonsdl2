@@ -255,11 +255,6 @@ void enums_freelist(lua_State *L, int *list);
 #define pushpowerstate(L, val) enums_push((L), DOMAIN_POWERSTATE, (int)(val))
 #define valuespowerstate(L) enums_values((L), DOMAIN_POWERSTATE)
 
-#define testfonthinting(L, arg, err) enums_test((L), DOMAIN_FONT_HINTING, (arg), (err))
-#define optfonthinting(L, arg, defval) enums_opt((L), DOMAIN_FONT_HINTING, (arg), (defval))
-#define checkfonthinting(L, arg) enums_check((L), DOMAIN_FONT_HINTING, (arg))
-#define pushfonthinting(L, val) enums_push((L), DOMAIN_FONT_HINTING, (int)(val))
-#define valuesfonthinting(L) enums_values((L), DOMAIN_FONT_HINTING)
 
 #define testmusictype(L, arg, err) enums_test((L), DOMAIN_MUSIC_TYPE, (arg), (err))
 #define optmusictype(L, arg, defval) enums_opt((L), DOMAIN_MUSIC_TYPE, (arg), (defval))
@@ -284,18 +279,6 @@ void enums_freelist(lua_State *L, int *list);
 #define checkhatstate(L, arg) enums_check((L), DOMAIN_HAT_STATE, (arg))
 #define pushhatstate(L, val) enums_push((L), DOMAIN_HAT_STATE, (int)(val))
 #define valueshatstate(L) enums_values((L), DOMAIN_HAT_STATE)
-
-#define testfontdirection(L, arg, err) enums_test((L), DOMAIN_FONT_DIRECTION, (arg), (err))
-#define optfontdirection(L, arg, defval) enums_opt((L), DOMAIN_FONT_DIRECTION, (arg), (defval))
-#define checkfontdirection(L, arg) enums_check((L), DOMAIN_FONT_DIRECTION, (arg))
-#define pushfontdirection(L, val) enums_push((L), DOMAIN_FONT_DIRECTION, (int)(val))
-#define valuesfontdirection(L) enums_values((L), DOMAIN_FONT_DIRECTION)
-
-#define testfontalign(L, arg, err) enums_test((L), DOMAIN_FONT_ALIGN, (arg), (err))
-#define optfontalign(L, arg, defval) enums_opt((L), DOMAIN_FONT_ALIGN, (arg), (defval))
-#define checkfontalign(L, arg) enums_check((L), DOMAIN_FONT_ALIGN, (arg))
-#define pushfontalign(L, val) enums_push((L), DOMAIN_FONT_ALIGN, (int)(val))
-#define valuesfontalign(L) enums_values((L), DOMAIN_FONT_ALIGN)
 
 #define testtouchdevicetype(L, arg, err) enums_test((L), DOMAIN_TOUCH_DEVICE_TYPE, (arg), (err))
 #define opttouchdevicetype(L, arg, defval) enums_opt((L), DOMAIN_TOUCH_DEVICE_TYPE, (arg), (defval))

@@ -279,7 +279,6 @@ void moonsdl2_open_cursor(lua_State *L);
 void moonsdl2_open_joystick(lua_State *L);
 void moonsdl2_open_gamecontroller(lua_State *L);
 void moonsdl2_open_animation(lua_State *L);
-void moonsdl2_open_font(lua_State *L);
 void moonsdl2_open_chunk(lua_State *L);
 void moonsdl2_open_music(lua_State *L);
 void moonsdl2_open_misc(lua_State *L);

@@ -34,10 +34,10 @@ DEBUG=1
 endif
 
 ifdef LINUX
-LIBS =  -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
+LIBS =  -lSDL2 -lSDL2_image -lSDL2_mixer
 endif
 ifdef MINGW
-LIBS = -lSDL2  -lSDL2_image -lSDL2_ttf -lSDL2_mixer -llua
+LIBS = -lSDL2  -lSDL2_image -lSDL2_mixer -llua
 endif
 
 Tgt	:= moonsdl2

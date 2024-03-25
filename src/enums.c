@@ -296,13 +296,10 @@ static int Enum(lua_State *L)
     CASE(systemcursor);
     CASE(logcategory);
     CASE(powerstate);
-    CASE(fonthinting);
     CASE(musictype);
     CASE(fading);
     CASE(audioformat);
     CASE(hatstate);
-    CASE(fontdirection);
-    CASE(fontalign);
     CASE(touchdevicetype);
     CASE(rwopstype);
     CASE(rwopswhence);
@@ -760,13 +757,6 @@ void moonsdl2_open_enums(lua_State *L)
     ADD(SWAPINTERVAL_VSYNC, "vsync");
     ADD(SWAPINTERVAL_ADAPTIVE_VSYNC, "adaptive vsync");
 
-    domain = DOMAIN_FONT_HINTING;
-    ADD(TTF_HINTING_NORMAL, "normal");
-    ADD(TTF_HINTING_LIGHT, "light");
-    ADD(TTF_HINTING_MONO, "mono");
-    ADD(TTF_HINTING_NONE, "none");
-    ADD(TTF_HINTING_LIGHT_SUBPIXEL, "light subpixel");
-
     domain = DOMAIN_MUSIC_TYPE;
     ADD(MUS_NONE, "none");
     ADD(MUS_CMD, "cmd");
@@ -796,17 +786,6 @@ void moonsdl2_open_enums(lua_State *L)
     ADD(AUDIO_S32MSB, "s32msb");
     ADD(AUDIO_F32, "f32");
     ADD(AUDIO_F32MSB, "f32msb");
-
-    domain = DOMAIN_FONT_DIRECTION;
-    ADD(TTF_DIRECTION_LTR, "ltr");
-    ADD(TTF_DIRECTION_RTL, "rtl");
-    ADD(TTF_DIRECTION_TTB, "ttb");
-    ADD(TTF_DIRECTION_BTT, "btt");
-
-    domain = DOMAIN_FONT_ALIGN;
-    ADD(TTF_WRAPPED_ALIGN_LEFT, "left");
-    ADD(TTF_WRAPPED_ALIGN_CENTER, "center");
-    ADD(TTF_WRAPPED_ALIGN_RIGHT, "right");
 
 #define FULLSCREEN_MODE_REAL SDL_WINDOW_FULLSCREEN
 #define FULLSCREEN_MODE_FAKE SDL_WINDOW_FULLSCREEN_DESKTOP

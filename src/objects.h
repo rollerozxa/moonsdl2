@@ -59,7 +59,6 @@ typedef struct moonsdl2_hintcb_s {
 #define palette_t SDL_Palette
 #define renderer_t SDL_Renderer
 #define texture_t SDL_Texture
-#define font_t TTF_Font
 #define chunk_t Mix_Chunk
 #define music_t Mix_Music
 #define timer_t moonsdl2_timer_t
@@ -81,7 +80,6 @@ typedef struct moonsdl2_hintcb_s {
 #define PALETTE_MT "moonsdl2_palette"
 #define RENDERER_MT "moonsdl2_renderer"
 #define TEXTURE_MT "moonsdl2_texture"
-#define FONT_MT "moonsdl2_font"
 #define CHUNK_MT "moonsdl2_chunk"
 #define MUSIC_MT "moonsdl2_music"
 #define TIMER_MT "moonsdl2_timer"
@@ -225,14 +223,6 @@ int newtexture(lua_State *L, texture_t *texture, ud_t *parent_ud);
 #define freetexturelist freexxxlist
 #define checktexturelist(L, arg, err) checkxxxlist((L), (arg), (err), TEXTURE_MT)
 #define pushtexture(L, handle) pushxxx((L), (void*)(handle))
-
-/* font.c */
-#define checkfont(L, arg, udp) (font_t*)checkxxx((L), (arg), (udp), FONT_MT)
-#define testfont(L, arg, udp) (font_t*)testxxx((L), (arg), (udp), FONT_MT)
-#define optfont(L, arg, udp) (font_t*)optxxx((L), (arg), (udp), FONT_MT)
-#define freefontlist freexxxlist
-#define checkfontlist(L, arg, err) checkxxxlist((L), (arg), (err), FONT_MT)
-#define pushfont(L, handle) pushxxx((L), (void*)(handle))
 
 /* chunk.c */
 #define checkchunk(L, arg, udp) (chunk_t*)checkxxx((L), (arg), (udp), CHUNK_MT)

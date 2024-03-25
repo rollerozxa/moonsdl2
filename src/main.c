@@ -31,7 +31,6 @@ static int Quit(lua_State *L)
     {
     moonsdl2_close_audio(L);
     Mix_Quit();
-    TTF_Quit();
     IMG_Quit();
     SDL_Quit();
     return 0;
@@ -76,16 +75,6 @@ static int AddVersions(lua_State *L)
     } while(0);
 
     do {
-        const SDL_version *ver = TTF_Linked_Version();
-        if(!((ver->major == 2) && (ver->minor >= 20)))
-            return luaL_error(L, "MoonSDL requires SDL_ttf >= 2.20.0 (found %d.%d.%d)",
-                    ver->major, ver->minor, ver->patch);
-        lua_pushstring(L, "_SDL_TTF_VERSION");
-        lua_pushfstring(L, "SDL_ttf %d.%d.%d", ver->major, ver->minor, ver->patch);
-        lua_settable(L, -3);
-    } while(0);
-
-    do {
         const SDL_version *ver = Mix_Linked_Version();
         if(!((ver->major == 2) && (ver->minor >= 6)))
             return luaL_error(L, "MoonSDL requires SDL_mixer >= 2.6.0 (found %d.%d.%d)",
@@ -110,7 +99,6 @@ static int Init(lua_State *L)
     ec = SDL_Init(EVERYTHING); CheckError(L, ec);
     sdl_flags = SDL_WasInit(0);
     img_flags = IMG_Init(EVERYTHING);
-    ec = TTF_Init(); CheckError(L, ec);
     mix_flags = Mix_Init(EVERYTHING);
     moonsdl2_reserve_event_codes(L);
     // flags indicating what has actually been initialized (ttf has no flags)
@@ -173,8 +161,6 @@ int luaopen_moonsdl2(lua_State *L)
     moonsdl2_open_messagebox(L);
     // SDL_image
     moonsdl2_open_animation(L);
-    // SDL_ttf
-    moonsdl2_open_font(L);
     // SDL_mixer
     moonsdl2_open_chunk(L);
     moonsdl2_open_music(L);

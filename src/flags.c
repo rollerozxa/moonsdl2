@@ -662,67 +662,6 @@ static int MixInitFlags(lua_State *L)
     ADD(MIX_INIT_OPUS);\
 
 
-/************************************************************************
- * SDL_ttf  
- ************************************************************************/
-
-/*----------------------------------------------------------------------*
- | ttfstyleflags 
- *----------------------------------------------------------------------*/
-
-static int checkttfstyleflags(lua_State *L, int arg) 
-    {
-    const char *s;
-    int flags = 0;
-    
-    while(lua_isstring(L, arg))
-        {
-        s = lua_tostring(L, arg++);
-#define CASE(CODE,str) if((strcmp(s, str)==0)) do { flags |= CODE; goto done; } while(0)
-    CASE(TTF_STYLE_NORMAL, "normal");
-    CASE(TTF_STYLE_BOLD, "bold");
-    CASE(TTF_STYLE_ITALIC, "italic");
-    CASE(TTF_STYLE_UNDERLINE, "underline");
-    CASE(TTF_STYLE_STRIKETHROUGH, "strikethrough");
-#undef CASE
-        return luaL_argerror(L, --arg, badvalue(L,s));
-        done: ;
-        }
-
-    return flags;
-    }
-
-static int pushttfstyleflags(lua_State *L, int flags)
-    {
-    int n = 0;
-
-#define CASE(CODE,str) do { if((flags & CODE)==CODE) { lua_pushstring(L, str); n++; } } while(0)
-    CASE(TTF_STYLE_NORMAL, "normal");
-    CASE(TTF_STYLE_BOLD, "bold");
-    CASE(TTF_STYLE_ITALIC, "italic");
-    CASE(TTF_STYLE_UNDERLINE, "underline");
-    CASE(TTF_STYLE_STRIKETHROUGH, "strikethrough");
-#undef CASE
-
-    return n;
-    }
-
-static int TtfStyleFlags(lua_State *L)
-    {
-    if(lua_type(L, 1) == LUA_TNUMBER)
-        return pushttfstyleflags(L, luaL_checkinteger(L, 1));
-    lua_pushinteger(L, checkttfstyleflags(L, 1));
-    return 1;
-    }
-
-#define Add_TtfStyleFlags(L) \
-    ADD(TTF_STYLE_NORMAL);\
-    ADD(TTF_STYLE_BOLD);\
-    ADD(TTF_STYLE_ITALIC);\
-    ADD(TTF_STYLE_UNDERLINE);\
-    ADD(TTF_STYLE_STRIKETHROUGH);\
-
-
 /*----------------------------------------------------------------------*/
 
 static int AddConstants(lua_State *L) /* sdl.XXX constants for SDL_XXX values */
@@ -740,7 +679,6 @@ static int AddConstants(lua_State *L) /* sdl.XXX constants for SDL_XXX values */
 #define ADD(c) do { lua_pushinteger(L, c); lua_setfield(L, -2, #c); } while(0)
     Add_MixInitFlags(L);
     Add_ImgInitFlags(L);
-    Add_TtfStyleFlags(L);
 #undef ADD
     return 0;
     }
@@ -757,7 +695,6 @@ static const struct luaL_Reg Functions[] =
         { "glcontextflags", GLContextFlags },
         { "mixinitflags", MixInitFlags },
         { "imginitflags", ImgInitFlags },
-        { "ttfstyleflags", TtfStyleFlags },
         { NULL, NULL } /* sentinel */
     };
 
